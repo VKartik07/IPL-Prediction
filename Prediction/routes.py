@@ -1,9 +1,8 @@
 from flask import render_template, request
-from app import app 
+from Prediction import app 
 import pickle
 import numpy as np
 
-# Load the Random Forest CLassifier model
 filename = 'predictor-model.pkl'
 regressor = pickle.load(open(filename, 'rb'))
 
