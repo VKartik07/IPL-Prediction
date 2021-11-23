@@ -48,11 +48,12 @@ X_train.drop(labels='date', axis=True, inplace=True)
 X_test.drop(labels='date', axis=True, inplace=True)
 
 # --- Model Building ---
-# Linear Regression Model
-from sklearn.linear_model import LinearRegression
-regressor = LinearRegression()
-regressor.fit(X_train,y_train)
+# XG Boost Regression Model
+from xgboost import XGBRegressor
+
+xgb_model = XGBRegressor(n_estimators=390, learning_rate=0.1)
+xgb_model.fit(X_test, y_test)
 
 # Creating a pickle file for the classifier
 filename = 'predictor-model.pkl'
-pickle.dump(regressor, open(filename, 'wb'))
+pickle.dump(xgb_model, open(filename, 'wb'))
